@@ -1,0 +1,15 @@
+services:
+  web:
+    build: .
+    ports:
+      -
+    depends_on:
+      - db
+  db:
+    image: 18.3-alpine3.23
+    ports:
+      -
+    volumes:
+      - bd_data:/data
+volumes:
+  bd_data:
