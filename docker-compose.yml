@@ -2,14 +2,32 @@ services:
   web:
     build: .
     ports:
-      -
+      - 8080:8080
     depends_on:
       - db
+    networks:
+      - app_network
+    restart: always
+
   db:
-    image: 18.3-alpine3.23
+    image: postgres:18.3-alpine3.23
+    container_name: booklib_db
+    environment:
+      POSTGRES_USER: damir
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: booksdb
     ports:
-      -
+      - "5432:5432"
     volumes:
-      - bd_data:/data
+      - pgdata:/var/lib/postgresql
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    restart: unless-stopped
+    networks:
+      - app_network
+
 volumes:
-  bd_data:
+  pgdata:
+
+networks:
+  app_network:
+    driver: bridge

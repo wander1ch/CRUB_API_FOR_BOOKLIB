@@ -24,7 +24,7 @@ func (a postgresStoreAdapter) CreateBook(book *models.Book) (int, error) {
     return book.ID, nil
 }
 func main() {
-    connStr := "user=postgres dbname=booksdb sslmode=disable password=secret"
+    connStr := "host=db user=damir dbname=booksdb sslmode=disable password=1234"
     db, err := sql.Open("postgres", connStr)
     if err != nil {
         log.Fatal("Cannot connect to DB:", err)
