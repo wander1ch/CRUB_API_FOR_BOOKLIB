@@ -1,7 +1,5 @@
 # CRUD API for Book Library
 
-# CRUD API for Book Library
-
 Простое REST API для управления библиотекой книг, написанное на Go с использованием PostgreSQL.  
 Контейнеризировано с помощью Docker Compose.
 
